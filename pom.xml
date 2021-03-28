@@ -21,9 +21,32 @@
 
 
 	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.2.0</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<show>private</show>
+					<nohelp>true</nohelp>
+					<javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
+				</configuration>
+			</plugin>
+		</plugins>
+
 		<pluginManagement><!-- lock down plugins versions to avoid using Maven 
 				defaults (may be moved to parent pom) -->
 			<plugins>
+
+
 				<!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
 				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
@@ -62,19 +85,7 @@
 				</plugin>
 
 
-				<!-- ovaj je za javadoc -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-javadoc-plugin</artifactId>
-					<executions>
-						<execution>
-							<id>attach-javadocs</id>
-							<goals>
-								<goal>jar</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
+
 
 				<!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
 				<plugin>
@@ -89,6 +100,8 @@
 		</pluginManagement>
 
 	</build>
+
+
 	<dependencies>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
